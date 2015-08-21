@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出框</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="modal.css">
+</head>
+<body>
+    <div id="button-box"><button type="button" id="modal-show">戳我</button>
+
+    <div class="modal-mask" id="light-modal">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>我是标题</h3>
+                </div>
+                <div class="modal-body">
+                    <p>我是内容</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="confirm"></button>
+                    <button type="button" class="cancel"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery.modal.js"></script>
+    
+    <script>
+        $('#modal-show').on('click', function () {
+            $('#light-modal').modal({
+                'width': '300px',
+                'confirmBtnText': 'OK',
+                'cancelBtnText': 'cancel',
+                // 'confirmEvent': 'click',
+                // 'cancelEvent': 'click',
+                'confirmCallback': function () {
+                    console.log('confirm callback test: div的id是' + $(this)[0]._element.attr('id'));
+                },
+                // 'cancelCallback': function () {
+                //     console.log('cancel callback test: div的id是' + $(this)[0]._element.attr('id'));
+                // }
+            });
+        });
+    </script>
+</body>
+</html>
